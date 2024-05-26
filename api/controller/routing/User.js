@@ -148,7 +148,6 @@ async function updateUser(req, res, next) {
             data: {
                 role: user.role,
                 status: user.status,
-                meta: user.meta,
                 displayName: user.displayName,
                 email: user.email,
                 username: user.username,

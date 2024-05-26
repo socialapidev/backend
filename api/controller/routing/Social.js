@@ -14,34 +14,20 @@ const { getMetaBusinessAccounts } = require('../../lib/meta/getMetaBusinessAccou
 // @desc Retrieves all products.
 async function getUserMetaBusinnesses(req, res, next) {
 
-    // Access User ID
-    // const { username } = req; 
+    const { userId, accessToken } = req.body;
 
-    // if(!req.username){
-    //     return res.status(400).message({
-    //         ok: false,
-    //         message: "Username is missing from request."
-    //     })
-    // }
+    if(!userId || !accessToken){
+        return res.status(400).send({
+            message: 'User Id & Access Token are required.',
+            ok: false
+        })
+    }
     
-    const username = "admin3"
     // Fetch User Meta Access Token
     try{
 
-        // Requesting User
-        const RequestingUser = await User.find({ username: username })
-
-        if(!RequestingUser){
-            return res.status(404).send({
-                message: 'User not found.',
-                ok: false
-            })
-        }
-
-        const { userId, metaAccessToken } = RequestingUser[0].meta
-
         // Request User Meta Businesses
-        const metaAccounts = await getMetaBusinessAccounts(userId, metaAccessToken)
+        const metaAccounts = await getMetaBusinessAccounts(userId, accessToken)
 
         // Return Business List
         res.status(200).send({
