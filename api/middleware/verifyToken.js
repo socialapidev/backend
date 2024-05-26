@@ -29,7 +29,7 @@ const verifyToken = (req,res,next) => {
             }
 
             // Set the decoded values
-            req.user = decoded.user.username;
+            req.username = decoded.user.username;
 
             // Next
             next();

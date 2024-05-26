@@ -36,6 +36,14 @@ const UserSchema = new Schema({
         required: [true, 'Status is required. (Active/Blocked)'],
         enum: ['active', 'blocked'],
         default: 'active'
+    },
+    meta: {
+        userId: {
+            type: String
+        },
+        metaAccessToken: {
+            type: String
+        }
     }
 })
 

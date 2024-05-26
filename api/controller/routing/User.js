@@ -146,6 +146,9 @@ async function updateUser(req, res, next) {
         // Return Response with updated user
         res.status(200).json({
             data: {
+                role: user.role,
+                status: user.status,
+                meta: user.meta,
                 displayName: user.displayName,
                 email: user.email,
                 username: user.username,

@@ -8,6 +8,7 @@ const Products = require('./Products')
 const Product = require('./Product')
 const Posts = require('./Posts')
 const Post = require('./Post')
+const Social = require('./Social')
 const { verifyToken } = require('../middleware/verifyToken');
 
 // Router
@@ -19,11 +20,15 @@ const Router = express.Router();
 Router.use('/auth', Auth);
 
 // PRIVATE ENDPOINTS
-if(process.env.NODE_ENV === 'PROD'){
-    Router.use((req,res,next) => {
-        verifyToken(req,res,next)
-    })
-}
+// if(process.env.NODE_ENV === 'PROD'){
+//     Router.use((req,res,next) => {
+//         verifyToken(req,res,next)
+//     })
+// }
+
+// Router.use((req,res,next) => {
+//     verifyToken(req,res,next)
+// })
 
 // @route /api/sites/
 // @access Private 
@@ -64,6 +69,11 @@ Router.use('/posts', Posts);
 // @access Private 
 // @desc Handles all post requests
 Router.use('/post', Post);
+
+// @route /api/social/
+// @access Private 
+// @desc Handles all post requests
+Router.use('/social', Social);
 
 // Module Exports
 module.exports = Router;

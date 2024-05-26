@@ -111,32 +111,32 @@ async function createProduct(req, res, next) {
 async function updateProduct(req, res, next) {
 
     // await postToInsta()
-    // const posts = await performAiRequest('You are a social media expert. Write 10 instagram captions for a solar panels brand. The response should be an array of JSON objects. Each object should have a title which is used in a graphic image (title: String), and also a caption for the image (imageCaption), as well as a caption for the post. The object key must be in Englis as title, imageCaption, caption. The values must be in Spanish directed for customers in Mexico')
-    // console.log(posts.length)
+    const posts = await performAiRequest('You are a social media expert. Write 10 instagram captions for a solar panels brand. The response should be an array of JSON objects. Each object should have a title which is used in a graphic image (title: String), and also a caption for the image (imageCaption), as well as a caption for the post. The object key must be in Englis as title, imageCaption, caption. The values must be in Spanish directed for customers in Mexico. Each caption must be at least 700 characters long!')
+    console.log(posts)
     // const images = posts.map(async (post) => {
     //     console.log('Generating Image')
     //     await generateImage(post)
     // }) 
 
 
-    // Login
-    const ig = new IgApiClient()
-    ig.state.generateDevice("byminimalcandles")
-    await ig.account.login("byminimalcandles", "Cremlino27")
+    // // Login
+    // const ig = new IgApiClient()
+    // ig.state.generateDevice("byminimalcandles")
+    // await ig.account.login("byminimalcandles", "Cremlino27")
 
-    // Load Image Into Buffer
-    const imageBuffer = await get({
-        url: "https://www.hindustantimes.com/ht-img/img/2023/08/25/550x309/international_dog_day_1692974397743_1692974414085.jpg",
-        encoding: null,
-    })
+    // // Load Image Into Buffer
+    // const imageBuffer = await get({
+    //     url: "https://www.hindustantimes.com/ht-img/img/2023/08/25/550x309/international_dog_day_1692974397743_1692974414085.jpg",
+    //     encoding: null,
+    // })
 
-    await ig.publish.photo({
-        file: imageBuffer,
-        caption: 'Testing server generate image'
-    })
+    // await ig.publish.photo({
+    //     file: imageBuffer,
+    //     caption: 'Testing server generate image'
+    // })
 
 
-    res.status(200).send('UPDATE PRODUCT OK')
+    // res.status(200).send('UPDATE PRODUCT OK')
    
 }
 
